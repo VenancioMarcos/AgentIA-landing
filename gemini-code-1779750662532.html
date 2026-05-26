@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentIA | Soluções Corporativas em Agentes de Atendimento IA</title>
+    <meta name="description" content="Automatize o atendimento e agendamento do seu negócio com agentes inteligentes de IA. Disponibilidade 24/7 no WhatsApp, integração ágil e total conformidade com a LGPD.">
+    <meta name="theme-color" content="#000000">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        custom: {
+                            white: '#FFFFFF',
+                            black: '#000000',
+                            darkSlate: '#2F4F4F',
+                            dimGrey: '#696969',
+                            slateGrey: '#708090',
+                            lightSlate: '#778899',
+                            grey: '#BEBEBE',
+                            lightGray: '#D3D3D3',
+                            bgLight: '#F8FAFA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.2s ease-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 400px;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+        .premium-shadow {
+            box-shadow: 0 20px 40px -15px rgba(47, 79, 79, 0.07);
+        }
+        .premium-shadow-hover:hover {
+            box-shadow: 0 30px 60px -15px rgba(47, 79, 79, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-white text-custom-black antialiased overflow-x-hidden">
+
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-custom-lightGray/40">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-custom-darkSlate flex items-center justify-center shadow-md">
+                        <i class="fas fa-layer-group text-white text-sm"></i>
+                    </div>
+                    <span class="font-extrabold text-xl tracking-tight text-custom-black">Agent<span class="text-custom-darkSlate">IA</span></span>
+                </div>
+                
+                <nav class="hidden md:flex items-center space-x-10">
+                    <a href="#problema" class="text-sm font-medium text-custom-dimGrey hover:text-custom-darkSlate transition">O Cenário</a>
+                    <a href="#solucao" class="text-sm font-medium text-custom-dimGrey hover:text-custom-darkSlate transition">A Tecnologia</a>
+                    <a href="#nichos" class="text-sm font-medium text-slate-500 hover:text-custom-darkSlate transition">Aplicações</a>
+                    <a href="#faq" class="text-sm font-medium text-slate-500 hover:text-custom-darkSlate transition">FAQ</a>
+                    <a href="https://wa.me/5511975266726?text=Ol%C3%A1!%20Vim%20da%20p%C3%A1gina%20e%20quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20Agente%20de%20IA%20para%20meu%20neg%C3%B3cio." 
+                       target="_blank"
+                       class="inline-flex items-center justify-center bg-custom-darkSlate text-white font-semibold text-xs uppercase tracking-wider px-6 py-3 rounded-lg hover:bg-custom-black transition-all duration-300 transform hover:-translate-y-0.5">
+                        <i class="fab fa-whatsapp mr-2 text-sm"></i>Agendar Demonstração
+                    </a>
+                </nav>
+                
+                <button type="button" onclick="toggleMenu()" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-custom-slateGrey hover:text-custom-black focus:outline-none">
+                    <i class="fas fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-custom-lightGray px-6 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#problema" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-custom-dimGrey hover:bg-custom-bgLight">O Cenário</a>
+            <a href="#solucao" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-custom-dimGrey hover:bg-custom-bgLight">A Tecnologia</a>
+            <a href="#nichos" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-custom-dimGrey hover:bg-custom-bgLight">Aplicações</a>
+            <a href="#faq" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-custom-dimGrey hover:bg-custom-bgLight">FAQ</a>
+            <a href="https://wa.me/5511975266726?text=Ol%C3%A1!%20Vim%20da%20p%C3%A1gina%20e%20quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20Agente%20de%20IA%20para%20meu%20neg%C3%B3cio." 
+               target="_blank"
+               class="flex items-center justify-center bg-custom-darkSlate text-white font-semibold py-3.5 rounded-lg text-sm">
+                <i class="fab fa-whatsapp mr-2"></i>Agendar Demonstração
+            </a>
+        </div>
+    </header>
+
+    <section class="relative pt-16 pb-24 md:pt-24 md:pb-36 bg-custom-bgLight overflow-hidden border-b border-custom-lightGray/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+                
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-white border border-custom-grey/40 text-custom-darkSlate px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-custom-darkSlate animate-pulse"></span> Transformação Digital Operacional
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-custom-black leading-[1.12]">
+                        Eficiência comercial e atendimento inteligente <span class="text-custom-darkSlate">24 horas por dia</span>
+                    </h1>
+                    
+                    <p class="text-lg text-custom-dimGrey max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Elimine os gargalos de agendamento e a perda de leads qualificados. Desenvolvemos agentes de Inteligência Artificial personalizados que gerenciam fluxos complexos de atendimento diretamente no WhatsApp da sua empresa.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="https://wa.me/5511975266726?text=Ol%C3%A1!%20Vim%20da%20p%C3%A1gina%20e%20quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20Agente%20de%20IA%20para%20meu%20neg%C3%B3cio." 
+                           target="_blank"
+                           class="inline-flex items-center justify-center bg-custom-darkSlate text-custom-white font-bold text-sm tracking-wide px-8 py-4 rounded-xl shadow-lg shadow-custom-darkSlate/20 hover:bg-custom-black transition-all duration-300 transform hover:-translate-y-0.5">
+                            <i class="fab fa-whatsapp mr-3 text-lg"></i> Solicitar Demonstração Corporativa
+                        </a>
+                        <a href="#solucao" class="inline-flex items-center justify-center bg-white border border-custom-lightGray text-custom-dimGrey hover:text-custom-black hover:border-custom-slateGrey font-semibold text-sm px-8 py-4 rounded-xl shadow-sm transition duration-300">
+                            Conhecer a Tecnologia
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4 pt-8 max-w-md mx-auto lg:mx-0 border-t border-custom-lightGray/60 text-left">
+                        <div>
+                            <p class="text-xl font-bold text-custom-black">0 min</p>
+                            <p class="text-xs text-custom-slateGrey font-medium">Tempo de espera</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-custom-black">100%</p>
+                            <p class="text-xs text-custom-slateGrey font-medium">Conforme LGPD</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-custom-black">+35%</p>
+                            <p class="text-xs text-custom-slateGrey font-medium">Média de conversão</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-5 relative">
+                    <div class="bg-white rounded-2xl border border-custom-lightGray/60 p-4 shadow-2xl premium-shadow">
+                        <div class="flex items-center space-x-2 border-b border-custom-bgLight pb-3 mb-4">
+                            <span class="w-3 h-3 rounded-full bg-custom-lightGray"></span>
+                            <span class="w-3 h-3 rounded-full bg-custom-lightGray"></span>
+                            <span class="w-3 h-3 rounded-full bg-custom-lightGray"></span>
+                            <span class="text-[11px] text-custom-slateGrey font-medium pl-2">whatsapp_integration_flow.sys</span>
+                        </div>
+                        
+                        <div class="space-y-4 p-2 text-xs font-sans">
+                            <div class="flex items-start gap-3">
+                                <div class="w-7 h-7 rounded bg-custom-lightGray flex-shrink-0 flex items-center justify-center font-bold text-[10px]">USER</div>
+                                <div class="bg-custom-bgLight p-3 rounded-xl rounded-tl-none max-w-[85%] text-custom-dimGrey">
+                                    Preciso remarcar minha consulta de amanhã à tarde para a próxima quinta-feira. Tem horário disponível?
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3 justify-end">
+                                <div class="bg-custom-darkSlate text-white p-3 rounded-xl rounded-tr-none max-w-[85%] text-left">
+                                    <p class="font-semibold mb-1"><i class="fas fa-robot mr-1.5"></i> Agente Autônomo:</p>
+                                    Identifiquei sua reserva atual. Analisando a agenda para quinta-feira, localizei os seguintes slots disponíveis: **10:30**, **14:00** e **16:30**. Qual deles atende melhor à sua necessidade?
+                                </div>
+                                <div class="w-7 h-7 rounded bg-custom-darkSlate text-white flex-shrink-0 flex items-center justify-center font-bold text-[10px]">AI</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="problema" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <span class="text-custom-darkSlate text-xs font-bold uppercase tracking-widest block">Análise de Gargalos</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-custom-black tracking-tight">
+                    O impacto operacional da latência no atendimento comercial
+                </h2>
+                <p class="text-custom-dimGrey text-base font-light leading-relaxed">
+                    A demora na interação inicial reduz drasticamente a retenção de novos clientes. Negócios focados em prestação de serviços enfrentam perdas diárias por infraestrutura de atendimento sobrecarregada.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-custom-bgLight border border-custom-lightGray/40 p-8 rounded-xl space-y-4">
+                    <div class="text-custom-slateGrey text-xl"><i class="fas fa-clock-rotate-left"></i></div>
+                    <h3 class="font-bold text-lg text-custom-black">Indisponibilidade fora de horário</h3>
+                    <p class="text-custom-dimGrey text-sm font-light leading-relaxed">Uma parcela expressiva das solicitações de agendamento ocorrem no período noturno ou finais de semana, momentos em que a equipe física está inativa.</p>
+                </div>
+                <div class="bg-custom-bgLight border border-custom-lightGray/40 p-8 rounded-xl space-y-4">
+                    <div class="text-custom-slateGrey text-xl"><i class="fas fa-network-wired"></i></div>
+                    <h3 class="font-bold text-lg text-slate-900">Sobrecarga de requisições de rotina</h3>
+                    <p class="text-custom-dimGrey text-sm font-light leading-relaxed">Dúvidas repetitivas sobre tabelas de preços, localização e políticas de cancelamento consomem horas produtivas da recepção corporativa.</p>
+                </div>
+                <div class="bg-custom-bgLight border border-custom-lightGray/40 p-8 rounded-xl space-y-4">
+                    <div class="text-custom-slateGrey text-xl"><i class="fas fa-calendar-minus"></i></div>
+                    <h3 class="font-bold text-lg text-custom-black">Fricção em cancelamentos e alterações</h3>
+                    <p class="text-custom-dimGrey text-sm font-light leading-relaxed">A ausência de um sistema automatizado para remarcações gera atrito no relacionamento com o usuário e dificulta o preenchimento de janelas ociosas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solucao" class="py-24 bg-custom-bgLight border-y border-custom-lightGray/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <span class="text-custom-darkSlate text-xs font-bold uppercase tracking-widest block">Arquitetura da Solução</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-custom-black">Automação inteligente ponta a ponta</h2>
+                <p class="text-custom-dimGrey text-base font-light">Uma camada robusta de processamento de linguagem natural integrada aos seus sistemas legados.</p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border border-custom-lightGray/40 p-6 rounded-xl space-y-4 premium-shadow transition duration-300">
+                    <div class="w-10 h-10 rounded-lg bg-custom-bgLight flex items-center justify-center text-custom-darkSlate font-bold"><i class="fas fa-calendar-days"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Validação de Agenda</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Leitura e gravação automática em calendários corporativos, garantindo sincronização imediata sem riscos de duplicidade.</p>
+                </div>
+                <div class="bg-white border border-custom-lightGray/40 p-6 rounded-xl space-y-4 premium-shadow transition duration-300">
+                    <div class="w-10 h-10 rounded-lg bg-custom-bgLight flex items-center justify-center text-custom-darkSlate font-bold"><i class="fas fa-sliders"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Modificação Dinâmica</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Processamento completo de cancelamentos e alterações contratuais de horários de forma direta pelo usuário no chat.</p>
+                </div>
+                <div class="bg-white border border-custom-lightGray/40 p-6 rounded-xl space-y-4 premium-shadow transition duration-300">
+                    <div class="w-10 h-10 rounded-lg bg-custom-bgLight flex items-center justify-center text-custom-darkSlate font-bold"><i class="fas fa-diagram-project"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Triagem & Transbordo</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Identificação automatizada de casos complexos com repasse estruturado de dados para atendimento humano imediato.</p>
+                </div>
+                <div class="bg-white border border-custom-lightGray/40 p-6 rounded-xl space-y-4 premium-shadow transition duration-300">
+                    <div class="w-10 h-10 rounded-lg bg-custom-bgLight flex items-center justify-center text-custom-darkSlate font-bold"><i class="fas fa-shield-halved"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Base de Conhecimento</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Treinamento avançado com dados institucionais do negócio para responder dúvidas operacionais complexas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nichos" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <span class="text-custom-darkSlate text-xs font-bold uppercase tracking-widest block">Segmentos Atendidos</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-custom-black">Customização por regras de negócio</h2>
+                <p class="text-custom-dimGrey text-base font-light">Ajustamos os modelos de linguagem para os termos técnicos e necessidades de cada mercado.</p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="border border-custom-lightGray/50 p-6 rounded-xl space-y-3 premium-shadow-hover transition duration-300">
+                    <div class="text-custom-darkSlate text-2xl"><i class="fas fa-scissors"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Salões & Clínicas de Estética</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Integração de agendas multifuncionais que combinam a disponibilidade de salas, equipamentos especializados e profissionais favoritos.</p>
+                </div>
+                <div class="border border-custom-lightGray/50 p-6 rounded-xl space-y-3 premium-shadow-hover transition duration-300">
+                    <div class="text-custom-darkSlate text-2xl"><i class="fas fa-tooth"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Clínicas Odontológicas</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Marcação ágil de avaliações, lembretes automatizados de retornos periódicos e disparo de protocolos pré-procedimento.</p>
+                </div>
+                <div class="border border-custom-lightGray/50 p-6 rounded-xl space-y-3 premium-shadow-hover transition duration-300">
+                    <div class="text-custom-darkSlate text-2xl"><i class="fas fa-paw"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Centros Veterinários & Pet Shops</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Gerenciamento inteligente de fluxos operacionais divididos por categorias de serviços, porte do animal e restrições horárias.</p>
+                </div>
+                <div class="border border-custom-lightGray/50 p-6 rounded-xl space-y-3 premium-shadow-hover transition duration-300">
+                    <div class="text-custom-darkSlate text-2xl"><i class="fas fa-car-wash"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Centros de Estética Automotiva</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Otimização de slots de ocupação com base no tempo estimado de execução de lavagens, detalhamentos e polimentos técnicos.</p>
+                </div>
+                <div class="border border-custom-lightGray/50 p-6 rounded-xl space-y-3 premium-shadow-hover transition duration-300">
+                    <div class="text-custom-darkSlate text-2xl"><i class="fas fa-hand-sparkles"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Nail Designers & Manicures</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Controle dinâmico de horários estendidos para novos procedimentos ou manutenções rápidas, reduzindo drasticamente janelas vagas.</p>
+                </div>
+                <div class="border border-custom-lightGray/50 p-6 rounded-xl space-y-3 premium-shadow-hover transition duration-300">
+                    <div class="text-custom-darkSlate text-2xl"><i class="fas fa-briefcase"></i></div>
+                    <h3 class="font-bold text-base text-custom-black">Outras Prestações de Serviço</h3>
+                    <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Modelagem de fluxos conversacionais estruturados sob medida para consultórios, estúdios e serviços agendados em geral.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-custom-bgLight border-y border-custom-lightGray/30">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl border border-custom-lightGray/40 flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded bg-custom-bgLight flex items-center justify-center text-custom-darkSlate text-xl flex-shrink-0"><i class="fas fa-user-shield"></i></div>
+                    <div>
+                        <h4 class="font-bold text-base text-custom-black mb-1">Garantia Técnica Homologada</h4>
+                        <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Nossa metodologia envolve mapeamento de escopo, desenvolvimento customizado e bateria de testes integrados. O sistema só entra em ambiente de produção após validação técnica completa.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-custom-lightGray/40 flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded bg-custom-bgLight flex items-center justify-center text-custom-darkSlate text-xl flex-shrink-0"><i class="fas fa-database"></i></div>
+                    <div>
+                        <h4 class="font-bold text-base text-custom-black mb-1">Segurança de Dados Corporativos</h4>
+                        <p class="text-custom-dimGrey text-xs font-light leading-relaxed">Desenvolvimento estruturado sob total conformidade com a LGPD. As conexões utilizam criptografia de ponta e infraestruturas em servidores protegidos para mitigar riscos de instabilidades ou banimentos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-custom-black tracking-tight">Perguntas Frequentes</h2>
+                <p class="text-custom-dimGrey text-sm font-light mt-2">Respostas técnicas sobre infraestrutura e implantação do sistema.</p>
+            </div>
+            
+            <div class="space-y-3">
+                <div class="accordion-item bg-custom-bgLight border border-custom-lightGray/30 rounded-lg overflow-hidden transition">
+                    <button type="button" onclick="toggleAccordion(this)" class="w-full px-6 py-5 text-left flex justify-between items-center text-custom-black font-bold text-sm focus:outline-none">
+                        <span><i class="fab fa-whatsapp text-custom-darkSlate mr-3"></i> Como a IA realiza a integração com o WhatsApp?</span>
+                        <i class="fas fa-chevron-down text-custom-slateGrey text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content px-6 bg-white text-custom-dimGrey text-xs font-light leading-relaxed">
+                        A solução se conecta de forma segura ao fluxo do seu número comercial por meio de APIs corporativas estáveis. O agente monitora as mensagens recebidas e atua apenas nos momentos mapeados, respondendo de forma natural e precisa.
+                    </div>
+                </div>
+                <div class="accordion-item bg-custom-bgLight border border-custom-lightGray/30 rounded-lg overflow-hidden transition">
+                    <button type="button" onclick="toggleAccordion(this)" class="w-full px-6 py-5 text-left flex justify-between items-center text-custom-black font-bold text-sm focus:outline-none">
+                        <span><i class="fas fa-timeline text-custom-darkSlate mr-3"></i> Qual é o prazo de implementação da automação?</span>
+                        <i class="fas fa-chevron-down text-custom-slateGrey text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content px-6 bg-white text-custom-dimGrey text-xs font-light">
+                        A engenharia do fluxo de conversação, mapeamento das regras de negócio, carregamento da base de conhecimento institucional e integrações com seus calendários levam em média até 5 dias úteis para estarem operacionais.
+                    </div>
+                </div>
+                <div class="accordion-item bg-custom-bgLight border border-custom-lightGray/30 rounded-lg overflow-hidden transition">
+                    <button type="button" onclick="toggleAccordion(this)" class="w-full px-6 py-5 text-left flex justify-between items-center text-custom-black font-bold text-sm focus:outline-none">
+                        <span><i class="fas fa-arrow-turn-up text-custom-darkSlate mr-3"></i> Como funciona o transbordo para o atendimento humano?</span>
+                        <i class="fas fa-chevron-down text-custom-slateGrey text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content px-6 bg-white text-custom-dimGrey text-xs font-light">
+                        O agente de IA analisa o contexto da conversa continuamente. Caso o cliente solicite falar com um operador ou apresente um cenário complexo fora do escopo programado, o robô pausa o fluxo autônomo na hora e direciona o histórico completo para a equipe física assumir o chat.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-custom-black text-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-6 relative z-10">
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Otimize a operação de atendimento do seu negócio</h2>
+            <p class="text-custom-grey text-base font-light max-w-xl mx-auto">Agende uma reunião técnica de viabilidade e conheça o potencial da automação inteligente para sua estrutura de vendas.</p>
+            <div class="pt-2">
+                <a href="https://wa.me/5511975266726?text=Ol%C3%A1!%20Vim%20da%20p%C3%A1gina%20e%20quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20Agente%20de%20IA%20para%20meu%20neg%C3%B3cio." 
+                   target="_blank"
+                   class="inline-flex items-center justify-center bg-custom-darkSlate text-white font-bold text-sm uppercase tracking-wider px-10 py-5 rounded-xl shadow-xl hover:bg-white hover:text-custom-black transition duration-300">
+                    <i class="fab fa-whatsapp mr-3 text-xl"></i> Agendar Diagnóstico Gratuito
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white text-custom-dimGrey border-t border-custom-lightGray/40 py-16 text-xs font-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-7 h-7 rounded bg-custom-darkSlate flex items-center justify-center text-white"><i class="fas fa-layer-group text-xs"></i></div>
+                        <span class="font-bold text-custom-black text-base tracking-tight">AgentIA</span>
+                    </div>
+                    <p class="max-w-xs text-custom-slateGrey text-xs leading-relaxed">Desenvolvimento estratégico de agentes virtuais inteligentes e automação de processos de agendamento focado em conversão e escalabilidade comercial.</p>
+                </div>
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="font-semibold text-custom-black text-xs uppercase tracking-wider">Estrutura</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#solucao" class="hover:text-custom-darkSlate transition">Tecnologia</a></li>
+                        <li><a href="#nichos" class="hover:text-custom-darkSlate transition">Casos de Uso</a></li>
+                        <li><a href="#faq" class="hover:text-slate-900 transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="font-semibold text-custom-black text-xs uppercase tracking-wider">Contato Oficial</h4>
+                    <ul class="space-y-2 text-custom-slateGrey">
+                        <li class="flex items-center gap-2"><i class="fas fa-envelope text-custom-lightSlate"></i> <a href="mailto:pontodeconvergencia.consultoria@gmail.com" class="hover:text-custom-black transition">pontodeconvergencia.consultoria@gmail.com</a></li>
+                        <li class="flex items-center gap-2"><i class="fab fa-whatsapp text-custom-lightSlate"></i> <a href="https://wa.me/5511975266726" class="hover:text-custom-black transition">+55 11 97526-6726</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-custom-lightGray/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-custom-slateGrey">
+                <p>&copy; 2026 AgentIA. Todos os direitos reservados.</p>
+                <p>Desenvolvido por <span class="text-custom-black font-semibold">Ponto de Convergência Consultoria</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            const isHidden = menu.classList.contains('hidden');
+            if(isHidden) {
+                menu.classList.remove('hidden');
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        }
+        
+        function toggleAccordion(button) {
+            const currentItem = button.parentElement;
+            const isActive = currentItem.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('i.fa-chevron-down').style.transform = 'rotate(0deg)';
+            });
+            
+            if (!isActive) {
+                currentItem.classList.add('active');
+                button.querySelector('i.fa-chevron-down').style.transform = 'rotate(180deg)';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstItem = document.querySelector('.accordion-item');
+            if (firstItem) {
+                firstItem.classList.add('active');
+                firstItem.querySelector('i.fa-chevron-down').style.transform = 'rotate(180deg)';
+            }
+        });
+    </script>
+</body>
+</html>
